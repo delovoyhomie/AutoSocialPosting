@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="index.css"/>
+    <title>TG Api Test</title>
+</head>
+<body>
+    <div class = "main">
+        <div class = "getData">
+            <div class = "getText">
+                <textarea name = "msg" type = "text" class = "textarea"> </textarea>
+            </div>
+            <div class = "getPict">
+                <input id = "photo-upload" name = "pict[]" type="file" title = "тест" class = "pictBtn" multiple/>
+                <button class = "photo-remove"> Удалить фото </button>
+            </div>
+            <div class = "confirm">
+                <button id = "POST" class = "acceptBtn"> Опубликовать </button>
+            </div>
+        </div>
+        <div class="img__wrapper"> </div>
+    </form>
+    <script src = "index.js"></script>
+    <script src = "server.js" ></script>
+</body>
+</html>
