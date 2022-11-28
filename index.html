@@ -11,17 +11,27 @@
     <div class = "main">
         <div class = "getData">
             <div class = "getText">
-                <textarea name = "msg" type = "text" class = "textarea"> </textarea>
+                <textarea name = "msg" type = "text" class = "textarea"></textarea>
             </div>
             <div class = "getPict">
+                <label class = "loadL" for = "photo-upload"></label>
                 <input id = "photo-upload" name = "pict[]" type="file" title = "тест" class = "pictBtn" multiple/>
                 <button class = "photo-remove"> Удалить фото </button>
+            </div>
+            <div class="allow">
+                <label class="tgL" for = "tg">Telegram</label>
+                <input class = "tgI" name = "tg" type = "checkbox">
+                <label class="vkL" for = "vk">VK</label>
+                <input class = "vkI" name = "vk" type = "checkbox">
             </div>
             <div class = "confirm">
                 <button id = "POST" class = "acceptBtn"> Опубликовать </button>
             </div>
         </div>
-        <div class="img__wrapper"> </div>
+        <a class="gitMain" href = "https://github.com/delovoyhomie/AutoSocialPosting" target="_blank">
+            <label class = "git"> Наш GitHub </label>
+            <div class = "gitImage"></div>
+        </a>
     </form>
     <script src = "index.js"></script>
     <script src = "server.js" ></script>
