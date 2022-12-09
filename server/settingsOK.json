@@ -1,0 +1,8 @@
+{
+  "application_id": number,
+  "application_key": "",
+  "application_secret_key": "",
+  "access_token": "",
+  "session_secret_key": "",
+  "gid": number
+}

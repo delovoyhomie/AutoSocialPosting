@@ -21,6 +21,7 @@ function makePost(){
     }
     let tg = document.getElementsByName("tg")[0].checked;
     let vk = document.getElementsByName("vk")[0].checked;
+    let ok = document.getElementsByName("ok")[0].checked;
     console.log(tg);
     console.log(vk);
     fetch("http://localhost:3000?upload=0",{
@@ -30,7 +31,8 @@ function makePost(){
             "name": MESSAGE, 
             "photoPath": paths,
             "vk": vk, 
-            "tg": tg
+            "tg": tg,
+            "ok": ok
         })
     })
     .then(success => {
