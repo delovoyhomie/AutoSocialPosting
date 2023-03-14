@@ -2,9 +2,9 @@
 
 # **Что нужно для правильной работы:**
 ### ***1) Установка библиотек:***
-`pip install -r requirements.txt`
-`npm install react-scripts`
-`npm install mysql`
+- `pip install -r requirements.txt`
+- `npm install react-scripts`
+- `npm install mysql`
 
 ### ***2) Установка XAMMP:***
  `https://www.apachefriends.org/download.html`
