@@ -3,10 +3,38 @@ import { useState } from 'react';
 import './reg.css'
 import { Link } from 'react-router-dom';
 
+const date = require('../config.json')
+const HOST = date['HOST']
+const PORT = date['PORT']
+const URL = 'http://' + HOST + ':' + PORT
+
+function get_cooks() {
+    let cookies = document.cookie;
+    if (cookies === '') {
+        cookies = 'user= ;passw= '
+    }
+    cookies = cookies.split(';')
+    console.log(cookies)
+    let CookiesArr = {}
+    for (let i = 0; i < cookies.length; i++) {
+        let cookie = cookies[i];
+        let cookieParts = cookie.split("=");
+        let cookieName = cookieParts[0].trim();
+        let cookieValue = cookieParts[1].trim();
+        CookiesArr[cookieName] = cookieValue
+    }
+    return CookiesArr
+}
+
 const Reg = () => {
     function onl (){
-        fetch('http://localhost:5000/getip',{
-            method: 'GET'
+        const allCookies = get_cooks()
+        fetch(URL + '/auth', {
+            method: 'POST',
+            body: JSON.stringify({
+                login: allCookies['user'],
+                passw: allCookies['passw']
+            })
         })
         .then(response => {
             console.log("Success");
@@ -81,7 +109,7 @@ const Reg = () => {
     const upload = (e) => {
         console.log(email)
         console.log('uploading data to server')
-        fetch('http://localhost:5000/reg',{
+        fetch(URL+'/reg',{
             method: 'POST',
             body: JSON.stringify({
                 mail: email,
@@ -97,6 +125,8 @@ const Reg = () => {
             console.log(data)
             if (data){
                 console.log('REDIRECTING TO LK')
+                document.cookie = 'user=' + (email)
+                document.cookie = 'passw=' + (password)
                 window.location.assign('/lk ')
             }
             else{

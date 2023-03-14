@@ -1,10 +1,10 @@
 import React from 'react';
 import '../main/App.css';
-import lkLogo from '../media/lk.png';
+import lkLogo from '../media/home.png';
 import '../toLk/toLk.css';
 import {Link} from 'react-router-dom';
 
-function toAuth(){
+function toAuthHome(){
     return(
         <Link to = "/auth">
             <div className='maintoLk'>
@@ -14,4 +14,4 @@ function toAuth(){
     );
 }
 
-export default toAuth;
+export default toAuthHome;

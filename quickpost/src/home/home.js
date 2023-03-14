@@ -7,6 +7,30 @@ import tgLogo from '../media/tgLogo.png'
 import vkLogo from '../media/vkLogo.png'
 import okLogo from '../media/okLogo.png'
 
+const date = require('../config.json')
+const HOST = date['HOST']
+const PORT = date['PORT']
+const URL = 'http://' + HOST + ':' + PORT
+
+function get_cooks() {
+    let cookies = document.cookie;
+    if (cookies === '') {
+        cookies = 'user= ;passw= '
+    }
+    cookies = cookies.split(';')
+    console.log(cookies)
+    let CookiesArr = {}
+    for (let i = 0; i < cookies.length; i++) {
+        let cookie = cookies[i];
+        let cookieParts = cookie.split("=");
+        let cookieName = cookieParts[0].trim();
+        let cookieValue = cookieParts[1].trim();
+        CookiesArr[cookieName] = cookieValue
+    }
+    return CookiesArr
+}
+
+
 let postBtn, photoDelBtn, loadLabel
 
 function readFile(i){
@@ -87,29 +111,24 @@ class Home extends React.Component{
     }
 
     componentDidMount(){
-        fetch('http://localhost:5000/getip',{
-            method: 'GET'
+        const allCookies = get_cooks()
+        fetch(URL + '/auth', {
+            method: 'POST',
+            body: JSON.stringify({
+                mail: allCookies['user'],
+                passw: allCookies['passw']
+            })
         })
         .then(response => {
             console.log("Success");
             return response.json().then(data => {
-                return data["ok"]
+                return data
             })
         }).then(data => {
             console.log(data)
-            if (data){
+            if (data["ok"]){
                 console.log('LOADED HOME PAGE')
-            }
-            else{
-                window.location.assign('/auth ')
-            }
-        })
-        fetch("http://localhost:5000/getaccount", {
-            method: "GET"
-        }).then(response => {
-            return response.json().then(data => {
-                // JSON.parse(data)
-                data = data['accounts']
+                data = JSON.parse(data['accounts'])
                 let lables = []
                 for (let i = 1; i < data.length; ++i){
                     lables.push(
@@ -128,12 +147,19 @@ class Home extends React.Component{
                         allowId: 'normal'
                     })
                 }
-            })
+            }
+            else{
+                window.location.assign('/auth ')
+            }
         })
     }
 
     render(){
         const makePost = () => {
+            document.getElementsByClassName('acceptBtn')[0].setAttribute('disabled', 'disabled')
+            setTimeout(()=>{
+                document.getElementsByClassName('acceptBtn')[0].removeAttribute('disabled')
+            }, 5000)
             let MESSAGE = document.getElementsByName("msg")[0].value;
             let paths = []
             let promises = [];
@@ -152,12 +178,14 @@ class Home extends React.Component{
                         sitesNumbers.push(i)
                     }
                 }
-                fetch("http://localhost:5000/upload",{
+                const allCookies = get_cooks()
+                fetch(URL+"/upload",{
                     method: "POST",
                     body: JSON.stringify({
                         "name": MESSAGE, 
                         "photos": paths,
-                        "sites": sitesNumbers
+                        "sites": sitesNumbers,
+                        "email": allCookies['user']
                     })
                 })
                 .then(success => {

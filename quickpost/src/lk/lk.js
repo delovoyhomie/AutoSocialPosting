@@ -1,44 +1,63 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import './lk.css'
+
+const date = require('../config.json')
+const HOST = date['HOST']
+const PORT = date['PORT']
+const URL = 'http://' + HOST + ':' + PORT
+
+function get_cooks() {
+    let cookies = document.cookie;
+    if (cookies === '') {
+        cookies = 'user= ;passw= '
+    }
+    cookies = cookies.split(';')
+    console.log(cookies)
+    let CookiesArr = {}
+    for (let i = 0; i < cookies.length; i++) {
+        let cookie = cookies[i];
+        let cookieParts = cookie.split("=");
+        let cookieName = cookieParts[0].trim();
+        let cookieValue = cookieParts[1].trim();
+        CookiesArr[cookieName] = cookieValue
+    }
+    return CookiesArr
+}
 
 function Lk(){
     const [TgAddOk, setTgAddOk] = useState('tg0')
     const [TgAddText, setTgText] = useState('Не привязан')
 
     const leave = (e) => {
-        fetch('http://localhost:5000/getip/?' + new URLSearchParams({leave: true}).toString(),{
-            method: 'GET'
-        })
-        .then(response => {
-            console.log("Success");
-            return response.json().then(data => {
-                return data["ok"]
-            })
-        }).then(data => {
-            console.log(data)
-            if (data){
-                console.log('LOADED AUTH PAGE')
-                window.location.assign('/auth')
-            }
-        })
+        document.cookie = 'user= '
+        document.cookie = 'passw= '
+        window.location.assign('/auth ')
+        // fetch(URL + '/getip/?' + new URLSearchParams({leave: true}).toString(),{
+        //     method: 'GET'
+        // })
+        // .then(response => {
+        //     console.log("Success");
+        //     return response.json().then(data => {
+        //         return data["ok"]
+        //     })
+        // }).then(data => {
+        //     console.log(data)
+        //     if (data){
+        //         console.log('LOADED AUTH PAGE')
+        //         window.location.assign('/auth')
+        //     }
+        // })
     }
 
     const [email, setEmail] = useState('')
 
     function onl(){
-        fetch('http://localhost:5000/getdata',{
-            method: 'GET'
-        })
-        .then(response => {
-            console.log("Success");
-            return response.json().then(data => {
-                return data["email"]
-            })
-        }).then(data => {
-            setEmail(data)
-        })
+        const allCookies = get_cooks()
+        setEmail(allCookies['user'])
     }
-    onl()
+    useEffect(()=>{
+        onl()
+    }, [])
 
     function checkId(s) {
         if (s){
@@ -60,10 +79,12 @@ function Lk(){
         if (checkId(document.getElementsByClassName("idInput")[0].value.split('/')[document.getElementsByClassName("idInput")[0].value.split('/').length-2]) === true){
             let id = '-100' + document.getElementsByClassName("idInput")[0].value.split('/')[document.getElementsByClassName("idInput")[0].value.split('/').length-2]
             console.log(id)
-            fetch("http://localhost:5000/uploadTG",{
+            const allCookies = get_cooks()
+            fetch(URL+"/uploadTG",{
                 method: "POST",
                 body: JSON.stringify({
-                    "chatID": id
+                    "chatID": id,
+                    "email": allCookies['user']
                 })
             })
             .then(success => {

@@ -49,6 +49,14 @@ button {
     border-radius: 20px;
 }
 
+button:disabled{
+    cursor: not-allowed;
+}
+
+button:disabled:hover{
+    background-color: white;
+}
+
 button:hover {
     background-color: #d9dbe1;
 }

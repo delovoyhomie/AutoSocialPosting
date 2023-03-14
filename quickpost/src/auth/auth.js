@@ -5,11 +5,39 @@ import { Link } from 'react-router-dom';
 import Lk from '../lk/lk';
 import ToLk from '../toLk/toLk';
 
+const date = require('../config.json')
+const HOST = date['HOST']
+const PORT = date['PORT']
+const URL = 'http://' + HOST + ':' + PORT
+
+function get_cooks() {
+    let cookies = document.cookie;
+    if (cookies === '') {
+        cookies = 'user= ;passw= '
+    }
+    cookies = cookies.split(';')
+    console.log(cookies)
+    let CookiesArr = {}
+    for (let i = 0; i < cookies.length; i++) {
+        let cookie = cookies[i];
+        let cookieParts = cookie.split("=");
+        let cookieName = cookieParts[0].trim();
+        let cookieValue = cookieParts[1].trim();
+        CookiesArr[cookieName] = cookieValue
+    }
+    return CookiesArr
+}
+
 const Auth = () => {
 
     function onl (){
-        fetch('http://localhost:5000/getip',{
-        method: 'GET'
+        const allCookies = get_cooks()
+        fetch(URL + '/auth',{
+            method: 'POST',
+                body: JSON.stringify({
+                    mail: allCookies['user'],
+                    passw: allCookies['passw']
+                })
         })
         .then(response => {
             console.log("Success");
@@ -84,7 +112,7 @@ const Auth = () => {
     const upload = (e) => {
         console.log(email)
         console.log('uploading data to server')
-        fetch('http://localhost:5000/auth',{
+        fetch(URL+'/auth',{
             method: 'POST',
             body: JSON.stringify({
                 mail: email,
@@ -99,6 +127,9 @@ const Auth = () => {
         }).then(data => {
             console.log(data)
             if (data){
+                document.cookie = 'user=' + (email)
+                document.cookie = 'passw=' + (password)
+                console.log(document.cookie)
                 console.log('REDIRECTING TO LK')
                 window.location.assign('/lk ')
             }

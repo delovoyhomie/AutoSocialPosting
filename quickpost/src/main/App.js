@@ -12,16 +12,48 @@ import Auth from '../auth/auth.js';
 import Reg from '../reg/reg.js';
 //import Test from '../test/test.js';
 import ToAuth from '../toLk/toAuth.js';
+import ToAuthHome from '../toLk/toAuthHome.js';
+
+const date = require('../config.json')
+const HOST = date['HOST']
+const PORT = date['PORT']
+const URL = 'http://' + HOST + ':' + PORT
+
+function get_cooks() {
+    let cookies = document.cookie;
+    if (cookies === '') {
+        cookies = 'user= ;passw= '
+    }
+    cookies = cookies.split(';')
+    console.log(cookies)
+    let CookiesArr = {}
+    for (let i = 0; i < cookies.length; i++) {
+        let cookie = cookies[i];
+        let cookieParts = cookie.split("=");
+        let cookieName = cookieParts[0].trim();
+        let cookieValue = cookieParts[1].trim();
+        CookiesArr[cookieName] = cookieValue
+    }
+    return CookiesArr
+}
 
 function App(){
     const [page, setPage] = useState({
         linker: null
     })
+    const [page1, setPage1] = useState({
+        linker1: null
+    })
 
     function onl (){
-        fetch('http://localhost:5000/getip',{
-        method: 'GET'
-    })
+        const allCookies = get_cooks()
+        fetch(URL + '/auth', {
+            method: 'POST',
+            body: JSON.stringify({
+                mail: allCookies['user'],
+                passw: allCookies['passw']
+            })
+        })
     .then(response => {
         console.log("Success");
         return response.json().then(data => {
@@ -35,12 +67,18 @@ function App(){
             setPage({
                 linker: <ToLk/>
             })
+            setPage1({
+                linker1: <ToHome/>
+            })
         }
         if (!data && (page.linker == <ToLk/> || page.linker == null)){
             console.log('LOADED AUTH PAGE')
             // window.location.assign('/auth')
             setPage({
                 linker: <ToAuth/>
+            })
+            setPage1({
+                linker1: <ToAuthHome/>
             })
         }
     })
@@ -50,25 +88,17 @@ function App(){
     return (
         <div className = 'main'>
             <div className = 'board'>
-                <ToHome/>
-                {/* <ToArhiv/> */}
-                {/* <ToTest/> */}
+                {page1.linker1}
                 {page.linker}
             </div>
             <div className = 'content'>
                 <Routes>
                     <Route path = "/" element = {<Home/>} />
-                    {/* <Route path = "/arhiv" element = {<Arhiv/>} /> */}
-                    {/* <Route path = "/test" element = {<Test/>} /> */}
-                    {/* <Route path = {page.adr} element = {page.pg} /> */}
                     <Route path = "/auth" element = {<Auth/>} />
                     <Route path = "/reg" element = {<Reg/>} />
                     <Route path = "/lk" element = {<Lk/>} />
                 </Routes>
             </div>
-            {/* <div className = "contacts">
-                (c) Бойко Г.А. 2022 <br></br>
-            </div> */}
         </div>
     );
 }

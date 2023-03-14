@@ -1,0 +1,17 @@
+{
+  "files": {
+    "main.css": "/static/css/main.b18bab3a.css",
+    "main.js": "/static/js/main.fb74f586.js",
+    "static/media/back.jpg": "/static/media/back.cf8b8f3d758af70231cf.jpg",
+    "static/media/tgLogo.png": "/static/media/tgLogo.9b3668708410c45831f0.png",
+    "static/media/lk.png": "/static/media/lk.a5d36c60b4d8ce58e7a0.png",
+    "static/media/okLogo.png": "/static/media/okLogo.d142eed636fb6f616fff.png",
+    "index.html": "/index.html",
+    "main.b18bab3a.css.map": "/static/css/main.b18bab3a.css.map",
+    "main.fb74f586.js.map": "/static/js/main.fb74f586.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.b18bab3a.css",
+    "static/js/main.fb74f586.js"
+  ]
+}
