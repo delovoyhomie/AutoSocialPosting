@@ -1,0 +1,38 @@
+@media screen and (min-width: 1000px) and (max-width: 2000px){
+  .board{
+      background-color: rgba(50, 50, 50, 0.65);
+      width: 77px;
+      height: 100vh;
+      position: absolute;
+      top: 0px;
+      bottom: 0px;
+      left: 0px;
+  }
+}
+
+@media screen and (min-width: 2001px){
+  .board{
+      position: absolute;
+      background-color: rgba(50, 50, 50, 0.65);
+      width: 150px;
+      height: 100vh;
+      top: 0px;
+      bottom: 0px;
+      left: 0px;
+  }
+}
+
+@media screen and (max-width: 999px){
+  .board{
+      background-color: rgba(50, 50, 50, 0.65);
+      width: 100vw;
+      height: 60px;
+      position: fixed;
+      left: 0px;
+      top: 0px;
+      z-index: 1;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+  }
+}

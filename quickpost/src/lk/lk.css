@@ -1,0 +1,290 @@
+#hrefToBot:hover{
+    color: rgb(150, 150, 150)
+}
+
+.isTgAddOK{
+    font-size: 85%;
+    margin-top: 10px;
+    /* background-color: rgba(0,0,0,0.55); */
+    font-weight: bold;
+    width: max-content;
+}
+
+#tg0{
+    color: black;
+}
+
+#tg1{
+    color: green;
+}
+
+#tg2{
+    color: red;
+}
+
+@media screen and (min-width: 1000px) and (max-width: 2000px){
+    .lkMain{
+        /* width: 100vw; */
+        height: 100vh;
+        font-size: 130%;
+        font-family: Century Gothic, 'Times New Roman', serif;
+        font-weight: 100;
+        font-stretch: condensed;
+        font-style: normal;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+    }
+    .greetingLk{
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        position: relative;
+        top: 10px;
+        /* width: 100%; */
+        font-size: 140%;
+    }
+    .leaveBtn{
+        position: absolute;
+        background-color: rgb(255, 255, 255);
+        border: 1px solid black;
+        border-radius: 15px;
+        width: 75px;
+        height: 25px;
+        top: 10px;
+        right: 10px;
+        cursor: pointer;
+    }
+    .userData{
+        position: relative;
+        display: flex;
+        justify-content: center;
+        top: 20px;
+        height: 70px;
+        width: max-content;
+    }
+    .emailData{
+        font-size: 100%;
+        margin-right: 40px;
+    }
+    .subscribeData{
+        font-size: 100%;
+    }
+    .linkAccText{
+        display: flex;
+        justify-content: center;
+        margin-top: 30px;
+        font-size: 120%;
+        margin-bottom: 20px;
+    }
+    .tgTutor{
+        margin-top: 10px;
+        display: flex;
+        justify-content: center;
+        font-size: 110%;
+        font-weight: bold;
+    }
+    .vkTutor{
+        margin-top: 20px;
+        display: flex;
+        justify-content: center;
+        font-size: 110%;
+        font-weight: bold;
+    }
+    #text{
+        font-weight: normal;
+        font-size: 100%;
+    }
+    .idInput{
+        margin-top: 10px;
+        height: 25px;
+        text-align: center;
+        width: 250px;
+    }
+    .idInputSub{
+        margin-top: 10px;
+        height: 25px;
+        text-align: center;
+        font-size: 80%;
+    }
+}
+
+@media screen and (min-width: 2001px){
+    .lkMain{
+        /* width: 100%; */
+        height: 100vh;
+        font-size: 350%;
+        font-family: Century Gothic, 'Times New Roman', serif;
+        font-weight: 100;
+        font-stretch: condensed;
+        font-style: normal;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+    }
+    .greetingLk{
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        position: relative;
+        top: 20px;
+        /* width: 100%; */
+        font-size: 140%;
+    }
+    .leaveBtn{
+        position: absolute;
+        background-color: white;
+        border: 2px solid black;
+        width: 200px;
+        height: 60px;
+        top: 20px;
+        right: 20px;
+        cursor: pointer;
+        font-size: 70%;
+    }
+    .userData{
+        display: flex;
+        position: relative;
+        justify-content: center;
+        top: 40px;
+        height: 150px;
+        width: max-content;
+
+    }
+    .emailData{
+        font-size: 100%;
+        margin-right: 80px;
+    }
+    .subscribeData{
+        font-size: 100%;
+    }
+    .linkAccText{
+        display: flex;
+        justify-content: center;
+        margin-top: 30px;
+        font-size: 120%;
+    }
+    .tgTutor{
+        margin-top: 10px;
+        display: flex;
+        justify-content: center;
+        font-size: 110%;
+        font-weight: bold;
+    }
+    .vkTutor{
+        margin-top: 20px;
+        display: flex;
+        justify-content: center;
+        font-size: 110%;
+        font-weight: bold;
+    }
+    #text{
+        font-weight: normal;
+        font-size: 100%;
+    }
+    .idInput{
+        margin-top: 20px;
+        height: 50px;
+        text-align: center;
+        width: 350px;
+        font-size: 70%;
+    }
+    .idInputSub{
+        margin-top: 20px;
+        height: 50px;
+        text-align: center;
+        font-size: 70%;
+        width: max-content;
+    }
+}
+
+@media screen and (max-width: 999px){
+    .lkMain{
+        /* width: 100vw; */
+        height: 100vh;
+        font-size: 130%;
+        font-family: Century Gothic, 'Times New Roman', serif;
+        font-weight: 100;
+        font-stretch: condensed;
+        font-style: normal;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+    }
+    .greetingLk{
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        position: relative;
+        top: 80px;
+        /* width: 100%; */
+        font-size: 120%;
+    }
+    .leaveBtn{
+        position: absolute;
+        background-color: white;
+        border: 1px solid black;
+        border-radius: 15px;
+        width: 75px;
+        height: 25px;
+        top: 80px;
+        right: 10px;
+        cursor: pointer;
+    }
+    .userData{
+        display: flex;
+        justify-content: center;
+        flex-direction: column;
+        position: relative;
+        top: 90px;
+        /* height: 70px;       */
+        height: max-content;
+    }
+    .emailData{
+        /* position: absolute; */
+        font-size: 90%;
+    }
+    .subscribeData{
+        /* margin-top: 30px; */
+        margin-bottom: 10px;
+        position: relative;
+        font-size: 90%;
+    }
+    .linkAccText{
+        display: flex;
+        justify-content: center;
+        margin-top: 85px;
+        font-size: 120%;
+    }
+    .tgTutor{
+        margin-top: 10px;
+        display: flex;
+        justify-content: center;
+        font-size: 110%;
+        font-weight: bold;
+    }
+    .vkTutor{
+        margin-top: 20px;
+        display: flex;
+        justify-content: center;
+        font-size: 110%;
+        font-weight: bold;
+    }
+    #text{
+        font-weight: normal;
+        font-size: 100%;
+    }
+    .idInput{
+        margin-top: 10px;
+        height: 25px;
+        text-align: center;
+        width: 250px;
+        font-size: 70%;
+    }
+    .idInputSub{
+        margin-top: 10px;
+        height: 25px;
+        text-align: center;
+        font-size: 90%;
+    }
+}
