@@ -1,19 +1,24 @@
-# A project created on a hackathon
-
-## Prize 200$
+# ----------------------> Quickpost <----------------------
 
 # **Что нужно для правильной работы:**
-## • Установка библиотек:
-`pip install -r requirements.txt`
+### ***1) Установка библиотек:***
+- `pip install -r requirements.txt`
+- `npm install react-scripts`
+- `npm install mysql`
 
-## • Вставка токенов и прочей информации о сообществах ВК, ОК и канале Telegram в файл `server/settings.json` (Временно)
-## • Установка XAMMP:
-- `https://www.apachefriends.org/ru/index.html`
+### ***2) Установка XAMMP:***
+ `https://www.apachefriends.org/download.html`
 
--  Запуск Apache и MYSQL в панели XAMMP
+### ***3)  Запуск **`Apache`** и **`MYSQL`** в панели XAMMP***
 
--   Переход на `http://localhost/phpmyadmin`:
+### ***4)   Переход на***
+ `http://localhost/phpmyadmin`
+### ***5)  Создание БД под названием*** `quickpost`
+### ***6)  Во вкладке `"Импорт"` выбор файла*** `quickpost.sql`
 
--  Создание БД и во вкладке `"Импорт"` выбор файла `quickpost.sql`
+### **Готово. Наслаждаемся**
 
-## **Готово. Наслаждаемся**
+
+
+
+
